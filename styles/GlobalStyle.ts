@@ -8,30 +8,28 @@ export const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: NotoSansR;
   }
+
   a {
     color: inherit;
     text-decoration: none;
   }
+
   * {
     box-sizing: border-box;
   }
+  
   @font-face {
-    font-family: AmaticSC;
-    src: url('/fonts/AmaticSC-Regular.ttf') format('truetype');
+    font-family: NotoSansL;
+    src: url('/fonts/NotoSansKR-Light.otf') format('truetype');
   }
   @font-face {
-    font-family: AmaticSCB;
-    src: url('/fonts/AmaticSC-Bold.ttf') format('truetype');
+    font-family: NotoSansR;
+    src: url('/fonts/NotoSansKR-Regular.otf') format('truetype');
   }
   @font-face {
-    font-family: Hangang;
-    src: url('/fonts/SEOULHANGANGB.TTF') format('truetype');
-  }
-  @font-face {
-    font-family: HangangB;
-    src: url('/fonts/SEOULHANGANGEB.TTF') format('truetype');
+    font-family: NotoSansB;
+    src: url('/fonts/NotoSansKR-Bold.otf') format('truetype');
   }
 `;
