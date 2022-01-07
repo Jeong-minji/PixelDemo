@@ -2,6 +2,14 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+`;
+
+export const ContentBox = styled.div`
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -76,11 +84,12 @@ export const UserInfo = styled.div`
   align-items: center;
 `;
 
-export const Profile = styled.div`
+export const Profile = styled.div<{ img: string }>`
   width: 24px;
   height: 24px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.1);
+  background-image: url(${({ img }) => img});
 `;
 
 export const Name = styled.span`
@@ -113,4 +122,11 @@ export const BtnQuestion = styled(Btn)`
 
 export const BtnOrder = styled(Btn)`
   background-color: #00e07e;
+`;
+
+export const BtnGoToStore = styled(Btn)`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
 `;

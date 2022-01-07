@@ -1,20 +1,22 @@
-import ContentInfoModal from "../components/layout/ContentInfoModal";
+import ContentInfoModal from "../components/layout/ContentInfo";
 import styled from "styled-components";
+import Link from "next/link";
 
 const Test: React.FC = () => {
   return (
     <Wrapper>
-      <ContentInfoModal />
+      <Link href="/content/5fe2fe3ec8c2dd00137f5d0b">1</Link>
+      <Link href="/content/2">2</Link>
+      <Link href="/content/3">3</Link>
+      <Link href="/content/4">4</Link>
+      <Link href="/content/5">5</Link>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  margin-top: 25%;
 `;
 
 export default Test;
