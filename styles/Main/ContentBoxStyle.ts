@@ -7,10 +7,9 @@ export const Wrapper = styled.li`
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   font-weight: 600;
-  cursor: pointer;
 `;
 
-export const ContentImage = styled.div<{ img1: string; img2: string }>`
+export const ContentImage = styled.img<{ img1: string; img2: string }>`
   width: 254px;
   height: 132px;
   border-top-left-radius: 8px;
@@ -19,6 +18,7 @@ export const ContentImage = styled.div<{ img1: string; img2: string }>`
   background-position: center;
   background-image: url(${({ img1 }) => img1});
   transition: all 0.2s ease-in;
+  cursor: pointer;
 
   &:hover {
     background-image: url(${({ img1, img2 }) => (img2 ? img2 : img1)});
@@ -36,6 +36,7 @@ export const Column = styled.div`
 export const Title = styled.h1`
   line-height: 1.4em;
   font-size: 14px;
+  cursor: pointer;
 `;
 
 export const AuthorInfo = styled.div`

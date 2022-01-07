@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { setPrice } from "../../../utils/setPrice";
 import { Content } from "../../../interfaces/Entity/index";
 import {
   Wrapper,
@@ -20,6 +23,7 @@ interface ContentInterface {
 
 const ContentBox: React.FC<ContentInterface> = ({ contentData }) => {
   const {
+    _id,
     title,
     images,
     userinfo,
@@ -32,39 +36,30 @@ const ContentBox: React.FC<ContentInterface> = ({ contentData }) => {
     companyPrice,
   } = contentData;
 
-  const setPrice = () => {
-    const prices = [
-      personalPrice,
-      businessPrice,
-      enterprisePrice,
-      individualPrice,
-      companyPrice,
-    ];
-
-    let filteredPrices = [];
-
-    for (let i = 0; i < prices.length; i++) {
-      if (prices[i] !== -1) {
-        filteredPrices.push(prices[i]);
-      }
-    }
-
-    filteredPrices.sort((a, b) => a - b);
-
-    return Math.min(filteredPrices[0]);
-  };
-
   return (
     <Wrapper>
-      <ContentImage img1={images[0]?.url} img2={images[1]?.url}></ContentImage>
+      <Link href={`/content/${_id}`} passHref>
+        <ContentImage img1={images[0]?.url} img2={images[1]?.url} />
+      </Link>
       <Column>
-        <Title>{title}</Title>
+        <Link href={`/content/${_id}`} passHref>
+          <Title>{title}</Title>
+        </Link>
         <AuthorInfo>
           <AuthorImage img={userinfo.profile?.url} />
           <AuthorName>{userinfo.username}</AuthorName>
         </AuthorInfo>
         <ContentInfo>
-          <Price>{setPrice().toLocaleString()} P</Price>
+          <Price>
+            {setPrice(
+              personalPrice,
+              businessPrice,
+              enterprisePrice,
+              individualPrice,
+              companyPrice
+            ).toLocaleString()}{" "}
+            P
+          </Price>
           <Popularity>
             <Views>{view} 뷰</Views>
             <Liked>{interest} 찜</Liked>
