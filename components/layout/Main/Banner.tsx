@@ -39,7 +39,7 @@ const Banner: React.FC = () => {
   }, []);
 
   return (
-    <Wrapper img={banner.url}>
+    <Wrapper img={banner?.url}>
       <UserInfo>
         <ProfileImage img={profile.url}></ProfileImage>
         <Name>{username}</Name>

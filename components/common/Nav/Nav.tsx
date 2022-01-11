@@ -26,7 +26,8 @@ const Nav: React.FC = () => {
   };
 
   const handleBtnLogout = () => {
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
+    router.push("/sign-in");
   };
 
   return (

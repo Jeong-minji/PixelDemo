@@ -10,13 +10,17 @@ if (typeof window !== "undefined") {
 // BaseURL 설정
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_ADDRESS,
-  headers: { "Content-Type": "application/json" },
+  timeout: 1000,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 // API 요청 전
 axiosInstance.interceptors.request.use(
   (config: any) => {
-    if (TOKEN) config.headers["Authorization"] = "Bearer " + TOKEN;
+    TOKEN ? (config.headers["Authorization"] = "Bearer " + TOKEN) : null;
+    console.log(config);
     return config;
   },
 
