@@ -14,9 +14,11 @@ import {
   PasswordForm,
   BtnLogin,
 } from "../styles/Signin/SigninStyle";
+import { useCookies } from "react-cookie";
 
 const Login: NextPage = () => {
   const router = useRouter();
+  const [cookie, setCookie] = useCookies(["token"]);
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -38,7 +40,7 @@ const Login: NextPage = () => {
     axiosInstance
       .post(login, account)
       .then((res) => {
-        localStorage.setItem("token", res.data.jwt);
+        setCookie("token", res.data.jwt, { path: "/" });
         router.push("/");
       })
       .catch(() => alert("아이디 비밀번호를 확인해주세요."));

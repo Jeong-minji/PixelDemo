@@ -6,6 +6,8 @@ import { theme } from "../styles/theme";
 import { useRouter } from "next/router";
 import Nav from "../components/common/Nav/Nav";
 
+import { CookiesProvider } from "react-cookie";
+
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
@@ -17,8 +19,10 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        {router.pathname === "/sign-in" ? null : <Nav />}
-        <Component {...pageProps} />
+        <CookiesProvider>
+          {router.pathname === "/sign-in" ? null : <Nav />}
+          <Component {...pageProps} />
+        </CookiesProvider>
       </ThemeProvider>
     </>
   );

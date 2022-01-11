@@ -10,10 +10,13 @@ import {
   BtnLogin,
   BtnLogout,
 } from "../../../styles/Main/NavStyle";
+import { useCookies } from "react-cookie";
 
 const Nav: React.FC = () => {
   const router = useRouter();
   const [userInfo, setUserInfo] = useState<string>("");
+
+  const [cookie, setCookie, removeCookie] = useCookies(["token"]);
 
   useEffect(() => {
     axiosInstance.get(user).then((res) => {
@@ -26,7 +29,7 @@ const Nav: React.FC = () => {
   };
 
   const handleBtnLogout = () => {
-    // localStorage.removeItem("token");
+    removeCookie("token");
     router.push("/sign-in");
   };
 
@@ -41,7 +44,7 @@ const Nav: React.FC = () => {
         />
         <UserName>{userInfo}</UserName>
       </Column>
-      {TOKEN ? (
+      {cookie.token ? (
         <BtnLogout onClick={handleBtnLogout}>로그아웃</BtnLogout>
       ) : (
         <BtnLogin onClick={handleBtnLogin}>로그인</BtnLogin>

@@ -1,13 +1,10 @@
 import axios from "axios";
 
-// Window 객체 생성 시 TOKEN 처리
-let TOKEN: string | null = "";
+var getCookie = function (name: string) {
+  var value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+  return value ? value[2] : null;
+};
 
-if (typeof window !== "undefined") {
-  TOKEN = localStorage.getItem("token");
-}
-
-// BaseURL 설정
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_ADDRESS,
   timeout: 1000,
@@ -16,11 +13,16 @@ const axiosInstance = axios.create({
   },
 });
 
+let TOKEN: string | null = "";
+
+if (typeof window !== "undefined") {
+  TOKEN = getCookie("token");
+}
+
 // API 요청 전
 axiosInstance.interceptors.request.use(
   (config: any) => {
-    TOKEN ? (config.headers["Authorization"] = "Bearer " + TOKEN) : null;
-    console.log(config);
+    if (TOKEN) config.headers["Authorization"] = "Bearer " + TOKEN;
     return config;
   },
 
@@ -41,4 +43,3 @@ axiosInstance.interceptors.response.use(
 );
 
 export default axiosInstance;
-export { TOKEN };
