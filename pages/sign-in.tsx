@@ -1,9 +1,10 @@
-import { useState } from "react";
-import axiosInstance from "../api/config";
-import { login } from "../api/routeUri";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import type { NextPage } from "next";
-import Image from "next/image";
+
+import axiosInstance, { TOKEN } from "../api/config";
+import { login } from "../api/routeUrl";
 import {
   Wrapper,
   LoginBox,
@@ -39,12 +40,16 @@ const Login: NextPage = () => {
       .post(login, account)
       .then((res) => {
         localStorage.setItem("token", res.data.jwt);
-        router.push("/");
+        window.location.replace("/");
       })
       .catch(() => alert("아이디 비밀번호를 확인해주세요."));
   };
 
   const isLoginActive = email.includes("@") && password.length > 8;
+
+  useEffect(() => {
+    if (TOKEN) router.push("/");
+  }, []);
 
   return (
     <Wrapper>

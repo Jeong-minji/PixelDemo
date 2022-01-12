@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-family: NotoSansR;
+    
   }
 
   a {
@@ -24,10 +25,12 @@ export const GlobalStyle = createGlobalStyle`
     font-family: NotoSansL;
     src: url('/fonts/NotoSansKR-Light.otf') format('truetype');
   }
+
   @font-face {
     font-family: NotoSansR;
     src: url('/fonts/NotoSansKR-Regular.otf') format('truetype');
   }
+  
   @font-face {
     font-family: NotoSansB;
     src: url('/fonts/NotoSansKR-Bold.otf') format('truetype');
