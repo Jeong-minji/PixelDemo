@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div<{ img: string }>`
+export const Wrapper = styled.div<{ img: string | undefined }>`
   display: flex;
   justify-content: center;
   height: 320px;

@@ -4,11 +4,11 @@ export interface Url {
 
 export interface User {
   username: string;
-  introduction: string;
-  email: string;
-  carrerFirst: string;
-  carrerSecond: string;
-  banner: Url;
+  introduction?: string;
+  email?: string;
+  carrerFirst?: string;
+  carrerSecond?: string;
+  banner?: Url;
   profile: Url;
 }
 
