@@ -2,9 +2,12 @@ import Link from "next/link";
 
 import { setPrice } from "../../../utils/setPrice";
 import { Content } from "../../../interfaces/Entity/index";
+
 import {
   Wrapper,
-  ContentImage,
+  Thumbnail,
+  MainImage,
+  SubImage,
   Column,
   Title,
   AuthorInfo,
@@ -39,7 +42,10 @@ const ContentBox: React.FC<ContentInterface> = ({ contentData }) => {
   return (
     <Wrapper>
       <Link href={`/content/${_id}`} passHref>
-        <ContentImage img1={images[0]?.url} img2={images[1]?.url} />
+        <Thumbnail>
+          <MainImage src={images[0]?.url} isExist={images[1] ? true : false} />
+          <SubImage src={images[1]?.url} />
+        </Thumbnail>
       </Link>
       <Column>
         <Link href={`/content/${_id}`} passHref>

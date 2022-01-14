@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 16px 40px;
+  top: 0;
   background-color: white;
 `;
 

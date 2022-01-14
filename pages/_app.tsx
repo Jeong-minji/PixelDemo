@@ -1,9 +1,13 @@
-import { AppProps } from "next/app";
 import Head from "next/head";
+import { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
+
 import { GlobalStyle } from "../styles/GlobalStyle";
 import { theme } from "../styles/theme";
-import { useRouter } from "next/router";
+
+import { store } from "../app/store";
 import Nav from "../components/common/Nav/Nav";
 
 function App({ Component, pageProps }: AppProps) {
@@ -16,10 +20,12 @@ function App({ Component, pageProps }: AppProps) {
         <title>PixelDemo</title>
       </Head>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        {router.pathname === "/sign-in" ? null : <Nav />}
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          {router.pathname === "/sign-in" ? null : <Nav />}
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
     </>
   );
 }

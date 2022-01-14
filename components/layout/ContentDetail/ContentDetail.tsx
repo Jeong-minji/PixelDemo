@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-import axiosInstance from "../../../api/config";
-import { content_detail } from "../../../api/routeUrl";
+import axiosInstance from "../../../features/api/config";
+import { content_detail } from "../../../features/api/routeUrl";
 import { Content } from "../../../interfaces/Entity/index";
 import { setPrice } from "../../../utils/setPrice";
 import {
@@ -30,7 +31,9 @@ interface DetailInterface {
   contentId: string | string[] | undefined;
 }
 
-const ContentDetailModal: React.FC<DetailInterface> = ({ contentId }) => {
+const ContentDetail: React.FC<DetailInterface> = () => {
+  const router = useRouter();
+  const contentId = router.query.id;
   const [loading, setLoading] = useState<boolean>(false);
   const [contentDetail, setcontentDetail] = useState<Content>({
     _id: "",
@@ -64,6 +67,8 @@ const ContentDetailModal: React.FC<DetailInterface> = ({ contentId }) => {
   } = contentDetail;
 
   useEffect(() => {
+    if (!contentId) return;
+
     setLoading(true);
 
     axiosInstance.get(`${content_detail}/${contentId}`).then((res) => {
@@ -132,4 +137,4 @@ const ContentDetailModal: React.FC<DetailInterface> = ({ contentId }) => {
   );
 };
 
-export default ContentDetailModal;
+export default ContentDetail;

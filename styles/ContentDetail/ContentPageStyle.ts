@@ -1,15 +1,23 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
-  max-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  min-height: 100vh;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const Btn = styled.button`
   min-width: 230px;
+  margin: 20px 60px;
   padding: 12.5px;
   border: none;
   border-radius: 64px;
@@ -19,8 +27,5 @@ export const Btn = styled.button`
 `;
 
 export const BtnGoToStore = styled(Btn)`
-  position: absolute;
-  right: 80px;
-  bottom: 30px;
   background-color: rgba(0, 0, 0, 0.1);
 `;

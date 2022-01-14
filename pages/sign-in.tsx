@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import type { NextPage } from "next";
 
-import axiosInstance, { TOKEN } from "../api/config";
-import { login } from "../api/routeUrl";
+import axiosInstance, { TOKEN } from "../features/api/config";
+import { login } from "../features/api/routeUrl";
+
 import {
   Wrapper,
   LoginBox,
@@ -21,6 +22,7 @@ const Login: NextPage = () => {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const isLoginActive = email.includes("@") && password.length > 8;
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -45,11 +47,12 @@ const Login: NextPage = () => {
       .catch(() => alert("아이디 비밀번호를 확인해주세요."));
   };
 
-  const isLoginActive = email.includes("@") && password.length > 8;
-
   useEffect(() => {
-    if (TOKEN) router.push("/");
-  }, []);
+    if (TOKEN) {
+      alert("이미 로그인 한 유저입니다.");
+      router.push("/");
+    }
+  }, [router]);
 
   return (
     <Wrapper>
