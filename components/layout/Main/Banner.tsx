@@ -48,11 +48,13 @@ const Banner: React.FC = () => {
   return (
     <Wrapper img={banner?.url}>
       <UserInfo>
-        <ProfileImage img={profile.url}></ProfileImage>
+        <ProfileImage
+          src={profile ? profile.url : "/images/default_profile.png"}
+        />
         <Name>{username}</Name>
         <TagList>
-          <Tag>#{carrerFirst}</Tag>
-          <Tag>#{carrerSecond}</Tag>
+          {carrerFirst ? <Tag>#{carrerFirst}</Tag> : null}
+          {carrerSecond ? <Tag>#{carrerSecond}</Tag> : null}
         </TagList>
         <Introduce>{introduction}</Introduce>
         <Email>{email}</Email>

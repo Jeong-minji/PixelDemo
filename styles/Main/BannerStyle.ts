@@ -8,7 +8,7 @@ export const Wrapper = styled.div<{ img: string | undefined }>`
   background-size: cover;
   background-position: center 24%;
   background-image: linear-gradient(to bottom, transparent, #1c1c1c),
-    url(${({ img }) => img});
+    url(${({ img }) => (img ? img : "/images/default_banner.jpg")});
 `;
 
 export const UserInfo = styled.div`
@@ -19,13 +19,12 @@ export const UserInfo = styled.div`
   width: fit-content;
 `;
 
-export const ProfileImage = styled.div<{ img: string }>`
+export const ProfileImage = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
-  background-image: url(${({ img }) => img});
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 

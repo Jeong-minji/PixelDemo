@@ -18,9 +18,7 @@ const Nav: React.FC = () => {
   useEffect(() => {
     axiosInstance
       .get(user)
-      .then((res) => {
-        setUserInfo(res.data.data.username);
-      })
+      .then((res) => setUserInfo(res.data.data.username))
       .catch(() => router.push("/sign-in"));
   }, []);
 
