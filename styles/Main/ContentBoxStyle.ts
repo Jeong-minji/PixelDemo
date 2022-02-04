@@ -9,20 +9,32 @@ export const Wrapper = styled.li`
   font-weight: 600;
 `;
 
-export const ContentImage = styled.img<{ img1: string; img2: string }>`
+export const Thumbnail = styled.div`
+  position: relative;
+`;
+
+export const MainImage = styled.img<{ isExist: boolean }>`
+  position: absolute;
+  left: 0;
   width: 254px;
   height: 132px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  background-size: cover;
-  background-position: center;
-  background-image: url(${({ img1 }) => img1});
-  transition: all 0.2s ease-in;
+  object-fit: cover;
   cursor: pointer;
 
   &:hover {
-    background-image: url(${({ img1, img2 }) => (img2 ? img2 : img1)});
+    opacity: ${({ isExist }) => (isExist ? 0 : 1)};
   }
+`;
+
+export const SubImage = styled.img`
+  width: 254px;
+  height: 132px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
 `;
 
 export const Column = styled.div`

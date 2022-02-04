@@ -1,8 +1,5 @@
-import { useState, useEffect } from "react";
+import { useGetUserQuery } from "../../../features/User/UserSlice";
 
-import axiosInstance from "../../../api/config";
-import { user } from "../../../api/routeUrl";
-import { User } from "../../../interfaces/Entity/index";
 import {
   Wrapper,
   UserInfo,
@@ -14,48 +11,22 @@ import {
   Email,
 } from "../../../styles/Main/BannerStyle";
 
-import { useRouter } from "next/router";
-
 const Banner: React.FC = () => {
-  const router = useRouter();
-  const [userData, setUserData] = useState<User>({
-    banner: { url: "" },
-    profile: { url: "" },
-    username: "",
-    introduction: "",
-    email: "",
-    carrerFirst: "",
-    carrerSecond: "",
-  });
-
-  const {
-    banner,
-    profile,
-    username,
-    carrerFirst,
-    carrerSecond,
-    introduction,
-    email,
-  } = userData;
-
-  useEffect(() => {
-    axiosInstance
-      .get(user)
-      .then((res) => setUserData(res.data.data))
-      .catch(() => router.push("/sign-in"));
-  }, []);
+  const user = useGetUserQuery().data?.data;
 
   return (
-    <Wrapper img={banner?.url}>
+    <Wrapper img={user?.banner?.url}>
       <UserInfo>
-        <ProfileImage img={profile.url}></ProfileImage>
-        <Name>{username}</Name>
+        <ProfileImage
+          src={user?.profile ? user.profile.url : "/images/default_profile.png"}
+        />
+        <Name>{user?.username}</Name>
         <TagList>
-          <Tag>#{carrerFirst}</Tag>
-          <Tag>#{carrerSecond}</Tag>
+          {user?.carrerFirst ? <Tag>#{user.carrerFirst}</Tag> : null}
+          {user?.carrerSecond ? <Tag>#{user?.carrerSecond}</Tag> : null}
         </TagList>
-        <Introduce>{introduction}</Introduce>
-        <Email>{email}</Email>
+        <Introduce>{user?.introduction}</Introduce>
+        <Email>{user?.email}</Email>
       </UserInfo>
     </Wrapper>
   );

@@ -17,7 +17,6 @@ export const ContentBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 480px;
-  margin-top: 90px;
 `;
 
 export const Thumbnail = styled.img`

@@ -7,7 +7,7 @@ export const setPrice = (
 ) => {
   const price = Math.min(
     ...[personal, business, enterprise, individual, company].filter(
-      (item) => item !== -1
+      (item) => item !== -1 && item !== undefined
     )
   );
 

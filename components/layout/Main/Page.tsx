@@ -4,13 +4,13 @@ interface PageInterface {
   key: number;
   text: number;
   focus: boolean;
-  handlePage: (e: React.MouseEvent<HTMLDivElement>) => void;
+  handleClickIndex: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-const Page: React.FC<PageInterface> = ({ text, focus, handlePage }) => {
+const Page: React.FC<PageInterface> = ({ text, focus, handleClickIndex }) => {
   return (
-    <Wrapper onClick={handlePage} focus={focus}>
-      {text}
+    <Wrapper focus={focus} onClick={handleClickIndex}>
+      {text + 1}
     </Wrapper>
   );
 };
