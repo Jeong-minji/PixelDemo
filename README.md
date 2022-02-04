@@ -5,7 +5,7 @@ Figma 디자인을 기반으로 Pixel 화면 구현 개인 과제
 - 기간: 2022. 01. 03. ~ 2022. 01. 21.
 
 ## Technology
-- **Frontend**: `Next.js`, `React`, `Typescript`, `Hook`, `Styled-Components`
+- **Frontend**: `Next.js`, `React`, `Redux`, `Typescript`, `Hook`, `Styled-Components`
 - **Common**: `Figma`, `Git`
 
 ## Main Function
